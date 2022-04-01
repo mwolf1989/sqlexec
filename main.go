@@ -17,7 +17,11 @@ func main() {
 	argsWithoutProg := os.Args[1:]
 	kind := argsWithoutProg[0]
 	query := argsWithoutProg[1]
-	config, err := util.LoadConfig(".")
+	configname := argsWithoutProg[2]
+	if configname == "" {
+		configname = "app"
+	}
+	config, err := util.LoadConfig(".", configname)
 	if err != nil {
 		fmt.Printf("Error loading config: %s\n", err)
 		os.Exit(2)

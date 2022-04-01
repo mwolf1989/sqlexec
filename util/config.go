@@ -7,9 +7,9 @@ type Config struct {
 	DBSource string `mapstructure:"DB_SOURCE"`
 }
 
-func LoadConfig(path string) (config Config, err error) {
+func LoadConfig(path string, configname string) (config Config, err error) {
 	viper.AddConfigPath(path)
-	viper.SetConfigName("app")
+	viper.SetConfigName(configname)
 	viper.SetConfigType("env")
 
 	viper.AutomaticEnv()
